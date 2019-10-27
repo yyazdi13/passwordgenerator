@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password Generator</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: cornflowerblue;
+            width: 60%;
+            padding: 15px;
+            margin: 50px;
+            text-align: center;
+        }
+
+        #password {
+            width: 30%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+            color: midnightblue;
+            background: rosybrown;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #pass {
+            width: 100%;
+        }
+
+        h2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: midnightblue;
+        }
+    </style>
+</head>
+<body style="background-color: lightblue;">
+    <div id="wrapper">
+<div id=container>
+    <h2> Click the button to generate your secure password</h2>
+    <button id="password"> Generate </button>
+    <br>
+    <input id="pass">
+</div>
+    <script>
+       function run () {
+        var answer = "";
+        var password = "";
+        var specialChar = "!@#$%^&*()_+=~`";
+        var lower = "abcdefghijklmnopqrstuvqrxyz";
+        var upper =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var num = "0123456789";
+        var x = parseInt(prompt("How long do you want your password to be (must be between 8 and 128 characters)?"));
+        
+        
+
+        if (x < 8 || x > 128) {
+            alert("must be between 8 and 128");
+            var x = parseInt(prompt(""));
+        }
+
+        
+        var special = confirm("would you like special characters?");
+        if (special) {
+           
+           answer += answer + specialChar;
+            
+           
+            }
+        
+    
+        
+
+        var lowercase = confirm("would you like lower case characters?");   
+        if (lowercase){
+
+            answer += answer += lower;
+
+            }
+
+        
+    var uppercase = confirm("would you like upper case characters?");
+        if (uppercase) {
+            answer += answer + upper;
+        }
+
+        var numbers = confirm("would you like number characters?");
+        if (numbers) {
+            answer += answer += num;
+        }
+
+        
+
+if (numbers === false && uppercase === false && lowercase === false && special === false) {
+    alert("you must meet at least one criteria, please try again.")
+}
+
+function passwordGenerator () {
+    for (i = 1; i <= x; i++) {
+        password = password + answer.charAt(Math.floor(Math.random() * answer.length));
+    }
+
+    document.getElementById("pass").value = password;
+}
+
+passwordGenerator();
+
+
+       
+       }   
+
+  var c = document.querySelector("#password")    
+  c.addEventListener("click", run) 
+
+    </script>
+</div>
+
+</body>
+</html>
